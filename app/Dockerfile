@@ -7,7 +7,7 @@ RUN npm run build
 FROM maven:latest AS appserver
 WORKDIR /usr/src/atsea
 COPY pom.xml .
-RUN mvn -B -f pom.xml -s /usr/share/maven/ref/settings-docker.xml dependency:resolve
+RUN mvn -B -f /tmp/pom.xml -s /usr/share/maven/ref/settings-docker.xml dependency:resolve
 COPY . .
 RUN mvn -B -s /usr/share/maven/ref/settings-docker.xml package -DskipTests
 
